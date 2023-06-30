@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block titulo %} login {% endblock %}
+    
+{% block conteudo %}
+<div class ="contact-area section-padding-0-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12"> <!-- Coluna -->
+                <div class="section-heading">
+                    <h2>login</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="contact-form-area">
+                    <form action="{% url 'login'%}" method="post">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                {% csrf_token %}
+                                <label for="email"><b>E-mail</b></label>
+                                <input type="text" id="email" class="form-control" name="email" placeholder="Informe seu E-mail" required>
+                            </div>
+                            <div class="col-12 col-lg-12">
+                                <label for="senha"><b>Senha</b></label>
+                                <input type="password" id="senha" class="form-control" name="senha" placeholder="Informe sua Senha">
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-success">
+                                    Acesse sua conta
+                                </button>
+                                <button type="submit" class="btn btn-primary" onclick="exibirCriarConta();">
+                                    Faça seu cadastro
+                                </button>
+                                <!-- <a href="{% url 'cadastro' %}" class="btn btn-primary">Faça seu cadastro</a> -->
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+function exibirCriarConta(){
+    location.href = "{% url 'cadastro' %}";
+}
+</script>
+{% endblock %}

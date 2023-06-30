@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %} Churras {% endblock %}
+
+{% block conteudo %}
+
+        <!-- Receipe Post Search -->
+        <div class="receipe-post-search mb-80">
+            <div class="container">
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col-12 col-lg-5">
+                            <select name="select1" id="select1">
+                                <option value="1">Entradas</option>
+                                <option value="1">Churrasco</option>
+                                <option value="1">Sobremesa</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-2 text-right">
+                            <button type="submit" class="btn delicious-btn">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Receipe Slider -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="receipe-slider owl-carousel">
+                        <img src="{% static 'img/bg-img/tomate_banner.jpg' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Receipe Content Area -->
+        <div class="receipe-content-area">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="receipe-headline my-5">
+                            <span>{{ prato.date_prato }}</span>
+                            <h2>{{ prato.nome_prato }}</h2>
+                            <div class="receipe-duration">
+                                <h6>Preparo: {{ prato.tempo_preparo }} minutos</h6>
+                                <h6>Rendimento: {{ prato.rendimento }} porçoes</h6>
+                                <h6>Categoria: {{ prato.categoria }}</h6>
+                                <h6>por: {{ prato.pessoa }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <!-- Single Preparation Step -->
+                        <div class="single-preparation-step d-flex">
+                            <p>{{ prato.modo_preparo }} </p>
+                        </div>
+                    </div>
+
+                    <!-- Ingredientes -->
+                    <div class="col-12 col-lg-4">
+                        <div class="ingredients">
+                            <h4>Resumo</h4>
+                            <div class="ingredients">
+                                <p>{{ prato.ingredientes }} </p>
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ingredientes -->
+            </div>
+        </div>
+
+{% endblock %}

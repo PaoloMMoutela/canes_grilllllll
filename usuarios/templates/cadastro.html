@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block titulo %} cadastro {% endblock %}
+
+{% block conteudo %}
+
+    <div class="contact-area section-padding-0-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">]
+                        <h2>criar conta</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="contact-form-area">
+                    <form action="{% url 'cadastro'%}" method="post">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                {% csrf_token %}
+                                <label for="nome"><b>Nome completo</b></label>
+                                <input type="text" name="nome" id="nome" class="form-control" placeholder="ex. Senac Taubate" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="email"><b>email</b></label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="ex. Senac Taubate" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <label for="senha"><b>senha</b></label>
+                                <input type="password" name="senha" id="senha" class="form-control" placeholder="ex. Senac Taubate" required>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="senha2"><b>refaça a senha</b></label>
+                                <input type="password" name="senha2" id="senha2" class="form-control" placeholder="ex. Senac Taubate" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button type="submit"  class="btn btn-success">criar sua conta</button>
+                                <button type="button"  class="btn btn-danger" id="btn-cancelar" onclick="cancelar();">cancelar cadastro</button>
+
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    function cancelar(){
+        location.href = "{% url 'index' %}"
+    }
+</script>
+{% endblock %}
