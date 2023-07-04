@@ -25,6 +25,8 @@
                             <h5>{{ prato.nome_prato }}</h5>
                             <h5>{{ prato.categoria }}</h5>
                         </a>
+                        <a href="{% url 'edita_prato' prato.id %}" type="button" class="btn btn-info">edita</a>
+                        <a href="{% url 'deleta_prato' prato.id %}" type="button" class="btn btn-danger">apagar</a>
                     </div>
                 </div>
             </div> 

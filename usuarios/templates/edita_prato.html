@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12"> <!-- Coluna -->
                     <div class="section-heading">
-                        <h3>Crie seu prato, {{ user.username }}</h3>
+                        <h3>Edite seu prato, {{ user.username }}</h3>
                     </div>
                 </div>
             </div>
@@ -23,31 +23,36 @@
                                 <div class="col-12 col-lg-12">
                                     {% csrf_token %}
                                     <label for="nome_prato"><b>Nome do Prato</b></label>
-                                    <input type="text" id="nome_prato" class="form-control" name="nome_prato" placeholder="ex. Picanha no Alho" required>
+                                    <input type="hidden" name="prato_id" value="{{ prato.id }}">
+                                    <input type="text" id="nome_prato" class="form-control" name="nome_prato" placeholder="ex. Picanha no Alho" value="{{ prato.nome_prato }}">
                                 </div>
                                 <div class="col-12 col-lg-12">
                                     <label for="ingredientes"><b>Ingredientes</b></label>
-                                    <textarea class="form-control" name="ingredientes" id="ingredientes" cols="30" rows="10" placeholder="ex. Picanha, &#10; Sal e temperos &#10; Alho" required></textarea>
+                                    <textarea class="form-control" name="ingredientes" id="ingredientes" cols="30" rows="10" placeholder="ex. Picanha, &#10; Sal e temperos &#10; Alho">{{ prato.ingredientes }}</textarea>
                                 </div>
                                 <div class="col-12 col-lg-12">
                                     <label for="modo_preparo"><b>Modo de Preparo</b></label>
-                                    <textarea class="form-control" name="modo_preparo" id="modo_preparo" cols="30" rows="10" placeholder="ex. Corte saboroso, temperado com alho, sal e diversos temperos, marinado para obter o máximo de suculência" required></textarea>
+                                    <textarea class="form-control" name="modo_preparo" id="modo_preparo" cols="30" rows="10" placeholder="ex. Corte saboroso, temperado com alho, sal e diversos temperos, marinado para obter o máximo de suculência"> {{prato.modo_preparo}} </textarea>
                                 </div>
-                                <div class="col-12 col-lg-3">
+                                <div class="col-12 col-lg-4">
                                     <label for="tempo_preparo"><b>Tempo de Preparo</b></label>
-                                    <input type="number" id="tempo_preparo" class="form-control" name="tempo_preparo" placeholder="ex. 2" >
+                                    <input type="number" id="tempo_preparo" class="form-control" name="tempo_preparo" placeholder="ex. 2" value="{{ prato.tempo_preparo }}">
                                 </div>
-                                <div class="col-12 col-lg-3">
+                                <div class="col-12 col-lg-4">
                                     <label for="rendimento"><b>Rendimento</b></label>
-                                    <input type="text" id="rendimento" class="form-control" name="rendimento" placeholder="ex. Serve 1 pessoa" >
+                                    <input type="text" id="rendimento" class="form-control" name="rendimento" placeholder="ex. Serve 1 pessoa" value="{{ prato.rendimento }}">
                                 </div>
-                                <div class="col-12 col-lg-3">
+                                <div class="col-12 col-lg-4">
                                     <label for="categoria"><b>Categoria</b></label>
-                                    <input type="text" id="categoria" class="form-control" name="categoria" placeholder="ex. Churrasco" >
+                                    <input type="text" id="categoria" class="form-control" name="categoria" placeholder="ex. Churrasco" value="{{ prato.categoria }}">
                                 </div>
-                                <div class="col-12 col-lg-3">
+                                <div class="col-12 col-lg-4">
+                                    <label><b>Foto utilizada</b></label>
+                                    <img src="{{ prato.foto_prato.url }}" alt="">
+                                </div>
+                                <div class="col-12 col-lg-4">
                                     <label for="foto_prato"><b>Foto</b></label>
-                                    <input type="FILE" id="foto_prato" class="form-control" name="foto_prato" >
+                                    <input type="file" id="foto_prato" class="form-control" name="foto_prato">
                                 </div>
 
 
@@ -61,7 +66,7 @@
 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-success">
-                                        Criar seu Prato
+                                        Salvar mudanças
                                     </button>
                                     <button type="submit" class="btn btn-danger"  style="background-color: #ff0000;" onclick="cancelar();">
                                         Cancelar
