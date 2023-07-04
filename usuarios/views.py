@@ -156,8 +156,8 @@ def atualiza_prato(request, prato_id):
             tempo_preparo= request.POST['tempo_preparo']
             rendimento= request.POST['rendimento']
             categoria= request.POST['categoria']
-            foto_prato= request.FILES['foto_prato']
-            user= get_object_or_404(User, pk=request.user.id)
+            # foto_prato= request.FILES['foto_prato']
+            
             prato= Prato.objects.get(pk=prato_id)
             prato.nome_prato=nome_prato,
             prato.ingredientes=ingredientes,
@@ -170,3 +170,5 @@ def atualiza_prato(request, prato_id):
                
             
             prato.save()
+            messages.success(request, 'prato nao encontrado')
+            return redirect('dashboard')
