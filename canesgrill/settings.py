@@ -84,19 +84,19 @@ WSGI_APPLICATION = 'canesgrill.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_churras',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST':'localhost',
-        'PORT':'3306',
-        'OPTIONS':{
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        }
-    }
-}
+# DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'db_churras',
+    #     'USER': 'root',
+    #     'PASSWORD': '',
+    #     'HOST':'localhost',
+    #     'PORT':'3306',
+    #     'OPTIONS':{
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    #     }
+    # }
+#  }
 
 
 # Password validation
@@ -133,7 +133,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'templates/static',
@@ -155,3 +155,16 @@ MESSAGE_TAGS = {
     message.WARNING: 'warning',
     message.INFO: 'info',
 }
+
+DATABASES = {
+    'default': {
+         'ENGINE': 'django.db.backends.postgrsql_psycopg2',
+         'NAME': 'railway',
+         'USER': 'postgres',
+         'PASSWORD': 'zckf6wcFQDPGrD9Ed9hQ',
+         'HOST':'containers-us-west-154.railway.app',
+         'PORT':'5805',
+        
+             
+         }
+     }

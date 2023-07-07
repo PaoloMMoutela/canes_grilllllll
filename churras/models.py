@@ -7,6 +7,11 @@ from django.contrib.auth.models import User
 
 
 class Prato(models.Model):
+    CATEGORIA_CHOICES =(
+        ('churrasco','churrasco'),
+        ('entrada','entrada'),
+        ('sobremesa','sobremesa'),
+    )
 
     pessoa = models.ForeignKey(User, on_delete = models.CASCADE)
 
@@ -28,6 +33,7 @@ class Prato(models.Model):
     )
     categoria = models.CharField(max_length=100,
         verbose_name='Categoria',
+        choices=CATEGORIA_CHOICES,
     )
     date_prato = models.DateTimeField(
         default=datetime.now, blank=True,
